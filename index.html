@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ankur Yadav - Software Engineer</title>
+  <style>
+    /* Basic Reset and Styling */
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+      background: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+    }
+    h1, h2, h3 {
+      color: #0056b3;
+    }
+    nav {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    nav a {
+      margin: 0 15px;
+      color: #0056b3;
+      font-weight: bold;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    section {
+      background: white;
+      padding: 20px 25px;
+      margin-bottom: 30px;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    ul {
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+    .project, .job {
+      margin-bottom: 15px;
+    }
+    footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9em;
+      color: #666;
+    }
+    .contact-list a {
+      color: #0056b3;
+      text-decoration: none;
+    }
+    .contact-list a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ankur Yadav</h1>
+    <p>Senior Software Engineer at Visa Inc. | M.Tech Computer Science (IIT Madras)</p>
+  </header>
+
+  <nav>
+    <a href="#about">About Me</a>
+    <a href="#current-work">Current Work</a>
+    <a href="#previous-work">Previous Work & Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      I am a Senior Software Engineer at Visa Inc. with experience in backend engineering, API development, and streaming large-scale transaction data. I hold a M.Tech. degree in Computer Science & Engineering from IIT Madras and a B.Tech. in Computer Science & Engineering.
+    </p>
+  </section>
+
+  <section id="current-work">
+    <h2>Current Work</h2>
+    <div class="job">
+      <h3>Senior Software Engineer, Visa Inc. (Mar 2023 – Present)</h3>
+      <p>Visa Direct – Backend Engineering</p>
+      <ul>
+        <li>Spearheading transformation of ISO 8583 financial messages into JSON for fintech partner integration.</li>
+        <li>Developing and enhancing APIs for transaction operations including pull, push, and reversal with high volume real-time payment flows.</li>
+        <li>Utilizing Apache Kafka for streaming transaction data and Elasticsearch for fast, scalable querying and analysis.</li>
+      </ul>
+    </div>
+    <div class="job">
+      <h3>Software Engineer, Visa Inc. (Oct 2020 – Feb 2023)</h3>
+      <p>Visa Direct – Backend Engineering</p>
+      <ul>
+        <li>Built and maintained backend services powering Visa Direct’s global push payment capabilities using Java, Spring, Maven, and Oracle.</li>
+        <li>Designed RESTful APIs for transaction initiation, reporting, and integration with internal and external systems.</li>
+        <li>Ensured high system reliability and compliance in collaboration with global partners and Visa’s security and infrastructure teams.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="previous-work">
+    <h2>Previous Work & Projects</h2>
+
+    <h3>M.Tech Project: Study of Compare Less Defer More (Feb 2019 – Dec 2019)</h3>
+    <ul>
+      <li>Scaling value-contexts based whole-program Heap analyses.</li>
+      <li>Explored DATALOG language in DOOP framework.</li>
+    </ul>
+
+    <h3>B.Tech Project: Parallel Programming using GPU (Aug 2016 – Apr 2017)</h3>
+    <ul>
+      <li>Implemented Matrix Multiplication with and without tiling on GPU.</li>
+      <li>Achieved speedup of 4.6x by optimizing tile sizes and thread dimensions.</li>
+    </ul>
+
+    <h3>Key Course Projects</h3>
+    <ul>
+      <li>Search Engine for Information Retrieval: Implemented Vector Space Model and Latent Semantic Analysis (Jan 2020 - May 2020)</li>
+      <li>Image Classification using CNN: Trained models and visualized features (Jan 2020 - May 2020)</li>
+      <li>Random Forest Implementation using GPU CUDA & C: Speedup of 3.3x with 78% accuracy (Apr 2019)</li>
+      <li>Code Instrumentation with LLVM & C++ (Feb 2019 - Apr 2019)</li>
+      <li>Handwritten Character and Spoken Digit Recognition using HMMs (Nov 2018 - Dec 2018)</li>
+    </ul>
+  </section>
+
+  <section id="skills">
+    <h2>Technical Skills</h2>
+    <ul>
+      <li><strong>Programming Languages:</strong> Python, C, C++, Java, DATALOG, MATLAB, Assembly (8085)</li>
+      <li><strong>Tools & Technologies:</strong> CUDA, LLVM, Eclipse, NetBeans, LaTeX, DOOP, TensorFlow</li>
+      <li><strong>Databases & Others:</strong> MySQL, XML, XQuery, XPath, OWL</li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <ul class="contact-list">
+      <li>Email: <a href="mailto:yankur9@gmail.com">yankur9@gmail.com</a></li>
+      <li>GitHub: <a href="https://github.com/yankur9" target="_blank" rel="noopener noreferrer">github.com/yankur9</a></li>
+      <li>LinkedIn: <a href="https://linkedin.com/in/ankur-yadav" target="_blank" rel="noopener noreferrer">linkedin.com/in/ankur-yadav</a></li>
+      <li>Phone: +91-8574962672</li>
+    </ul>
+  </section>
+
+  <footer>
+    &copy; 2025 Ankur Yadav
+  </footer>
+
+  <script>
+    // Smooth scroll for navigation links
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>
