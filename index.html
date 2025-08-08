@@ -50,9 +50,14 @@
     .tab-nav {
       text-align: center;
       margin-bottom: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
     }
     .tab-btn {
-      margin: 0 8px;
+      flex: 0 1 auto;
+      margin: 0;
       padding: 10px 22px;
       background: linear-gradient(90deg,#0056b3 60%,#007bff 100%);
       color: #fff;
@@ -63,6 +68,9 @@
       font-size: 1em;
       box-shadow: 0 2px 6px rgba(0,0,0,0.07);
       transition: background 0.2s, color 0.2s;
+      min-width: 120px;
+      max-width: 220px;
+      white-space: nowrap;
     }
     .tab-btn:hover {
       background: #003d80;
@@ -76,6 +84,14 @@
       border-radius: 8px;
       box-shadow: 0 2px 12px rgba(0,0,0,0.07);
       animation: fadeIn 0.3s;
+    }
+    .project-block {
+      margin-bottom: 28px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eaeaea;
+    }
+    .project-block:last-child {
+      border-bottom: none;
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
@@ -131,9 +147,7 @@
   <nav class="tab-nav">
     <button class="tab-btn" onclick="showTab('about')">About</button>
     <button class="tab-btn" onclick="showTab('company')">Recent Company</button>
-    <button class="tab-btn" onclick="showTab('master-project')">Master's Project</button>
-    <button class="tab-btn" onclick="showTab('bachelor-project')">Bachelor's Project</button>
-    <button class="tab-btn" onclick="showTab('projects')">Other Projects & Achievements</button>
+    <button class="tab-btn" onclick="showTab('projects')">Projects & Achievements</button>
     <button class="tab-btn" onclick="showTab('skills')">Skills</button>
     <button class="tab-btn" onclick="showTab('profiles')">Profiles</button>
     <button class="tab-btn" onclick="showTab('contact')">Contact</button>
@@ -168,26 +182,32 @@
 
   <section id="projects" class="tab-section" style="display:none;">
     <h2>Projects & Achievements</h2>
-    <h3>Master's Project (M.Tech, IIT Madras)</h3>
-    <ul>
-      <li>Study of Compare Less Defer More (Feb 2019 – Dec 2019): Scaled value-contexts based whole-program Heap analyses for improved program analysis. Explored DATALOG language in DOOP framework for static analysis research. Published work and contributed to academic research in program analysis.</li>
-    </ul>
-    <h3>Bachelor's Project (B.Tech)</h3>
-    <ul>
-      <li>Parallel Programming using GPU (Aug 2016 – Apr 2017): Implemented Matrix Multiplication with and without tiling on GPU for performance benchmarking. Achieved speedup of 4.6x by optimizing tile sizes and thread dimensions. Demonstrated effective use of CUDA for parallel computation.</li>
-    </ul>
-    <h3>Key Course Projects</h3>
-    <ul>
-      <li>Search Engine for Information Retrieval: Implemented Vector Space Model and Latent Semantic Analysis (Jan 2020 - May 2020)</li>
-      <li>Image Classification using CNN: Trained models and visualized features (Jan 2020 - May 2020)</li>
-      <li>Random Forest Implementation using GPU CUDA & C: Speedup of 3.3x with 78% accuracy (Apr 2019)</li>
-      <li>Code Instrumentation with LLVM & C++ (Feb 2019 - Apr 2019)</li>
-      <li>Handwritten Character and Spoken Digit Recognition using HMMs (Nov 2018 - Dec 2018)</li>
-    </ul>
-    <h3>Certificate</h3>
-    <ul>
-      <li><a href="https://www.credly.com/users/ankur-yadav.5564058c" target="_blank" rel="noopener noreferrer">View Credly Certificate</a></li>
-    </ul>
+    <div class="project-block">
+      <h3>Master's Project (M.Tech, IIT Madras)</h3>
+      <p><strong>Study of Compare Less Defer More</strong> (Feb 2019 – Dec 2019)<br>
+      Scaled value-contexts based whole-program Heap analyses for improved program analysis. Explored DATALOG language in DOOP framework for static analysis research. Published work and contributed to academic research in program analysis.</p>
+    </div>
+    <div class="project-block">
+      <h3>Bachelor's Project (B.Tech)</h3>
+      <p><strong>Parallel Programming using GPU</strong> (Aug 2016 – Apr 2017)<br>
+      Implemented Matrix Multiplication with and without tiling on GPU for performance benchmarking. Achieved speedup of 4.6x by optimizing tile sizes and thread dimensions. Demonstrated effective use of CUDA for parallel computation.</p>
+    </div>
+    <div class="project-block">
+      <h3>Key Course Projects</h3>
+      <ul>
+        <li><strong>Search Engine for Information Retrieval:</strong> Implemented Vector Space Model and Latent Semantic Analysis (Jan 2020 - May 2020)</li>
+        <li><strong>Image Classification using CNN:</strong> Trained models and visualized features (Jan 2020 - May 2020)</li>
+        <li><strong>Random Forest Implementation using GPU CUDA & C:</strong> Speedup of 3.3x with 78% accuracy (Apr 2019)</li>
+        <li><strong>Code Instrumentation with LLVM & C++:</strong> (Feb 2019 - Apr 2019)</li>
+        <li><strong>Handwritten Character and Spoken Digit Recognition using HMMs:</strong> (Nov 2018 - Dec 2018)</li>
+      </ul>
+    </div>
+    <div class="project-block">
+      <h3>Certificate</h3>
+      <ul>
+        <li><a href="https://www.credly.com/users/ankur-yadav.5564058c" target="_blank" rel="noopener noreferrer">View Credly Certificate</a></li>
+      </ul>
+    </div>
   </section>
 
   <section id="skills" class="tab-section" style="display:none;">
