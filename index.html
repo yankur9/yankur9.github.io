@@ -5,6 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ankur Yadav - Software Engineer</title>
   <style>
+    .tab-nav {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .tab-btn {
+      margin: 0 8px;
+      padding: 8px 18px;
+      background: #0056b3;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .tab-btn:hover {
+      background: #003d80;
+    }
+    .tab-section {
+      display: none;
+    }
+    .tab-section:target {
+      display: block;
+    }
     /* Basic Reset and Styling */
     body {
       font-family: Arial, sans-serif;
@@ -17,20 +41,6 @@
     }
     h1, h2, h3 {
       color: #0056b3;
-    }
-    nav {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-    nav a {
-      margin: 0 15px;
-      color: #0056b3;
-      font-weight: bold;
-      text-decoration: none;
-      cursor: pointer;
-    }
-    nav a:hover {
-      text-decoration: underline;
     }
     section {
       background: white;
@@ -67,25 +77,25 @@
     <p>Senior Software Engineer at Visa Inc. | M.Tech Computer Science (IIT Madras)</p>
   </header>
 
-  <nav>
-    <a href="#about">About</a>
-    <a href="#company">Recent Company</a>
-    <a href="#master-project">Master's Project</a>
-    <a href="#bachelor-project">Bachelor's Project</a>
-    <a href="#projects">Other Projects & Achievements</a>
-    <a href="#skills">Skills</a>
-    <a href="#profiles">Profiles</a>
-    <a href="#contact">Contact</a>
+  <nav class="tab-nav">
+    <button class="tab-btn" onclick="showTab('about')">About</button>
+    <button class="tab-btn" onclick="showTab('company')">Recent Company</button>
+    <button class="tab-btn" onclick="showTab('master-project')">Master's Project</button>
+    <button class="tab-btn" onclick="showTab('bachelor-project')">Bachelor's Project</button>
+    <button class="tab-btn" onclick="showTab('projects')">Other Projects & Achievements</button>
+    <button class="tab-btn" onclick="showTab('skills')">Skills</button>
+    <button class="tab-btn" onclick="showTab('profiles')">Profiles</button>
+    <button class="tab-btn" onclick="showTab('contact')">Contact</button>
   </nav>
 
-  <section id="about">
+  <section id="about" class="tab-section">
     <h2>About</h2>
     <p>
       Senior Software Engineer with expertise in backend engineering, API development, and large-scale data streaming. M.Tech. in Computer Science & Engineering from IIT Madras, B.Tech. in Computer Science & Engineering. Passionate about scalable systems, data analysis, and innovative solutions.
     </p>
   </section>
 
-  <section id="company">
+  <section id="company" class="tab-section" style="display:none;">
     <h2>Recent Company</h2>
     <div class="job">
       <h3>Visa Inc. – Senior Software Engineer (Mar 2023 – Present)</h3>
@@ -105,7 +115,7 @@
     </div>
   </section>
 
-  <section id="master-project">
+  <section id="master-project" class="tab-section" style="display:none;">
     <h2>Master's Project (M.Tech, IIT Madras)</h2>
     <h3>Study of Compare Less Defer More (Feb 2019 – Dec 2019)</h3>
     <ul>
@@ -115,7 +125,7 @@
     </ul>
   </section>
 
-  <section id="bachelor-project">
+  <section id="bachelor-project" class="tab-section" style="display:none;">
     <h2>Bachelor's Project (B.Tech)</h2>
     <h3>Parallel Programming using GPU (Aug 2016 – Apr 2017)</h3>
     <ul>
@@ -125,7 +135,7 @@
     </ul>
   </section>
 
-  <section id="projects">
+  <section id="projects" class="tab-section" style="display:none;">
     <h2>Other Projects & Achievements</h2>
     <h3>Key Course Projects</h3>
     <ul>
@@ -141,7 +151,7 @@
     </ul>
   </section>
 
-  <section id="skills">
+  <section id="skills" class="tab-section" style="display:none;">
     <h2>Technical Skills</h2>
     <ul>
       <li><strong>Programming Languages:</strong> Python, C, C++, Java, DATALOG, MATLAB, Assembly (8085)</li>
@@ -150,18 +160,17 @@
     </ul>
   </section>
 
-  <section id="profiles">
+  <section id="profiles" class="tab-section" style="display:none;">
     <h2>Profiles</h2>
     <ul class="contact-list">
       <li>HackerRank: <a href="https://www.hackerrank.com/profile/cs18m063" target="_blank" rel="noopener noreferrer">hackerrank.com/profile/cs18m063</a></li>
       <li>LeetCode: <a href="https://leetcode.com/u/yankur9/" target="_blank" rel="noopener noreferrer">leetcode.com/u/yankur9</a></li>
       <li>GitHub: <a href="https://github.com/yankur9" target="_blank" rel="noopener noreferrer">github.com/yankur9</a></li>
       <li>LinkedIn: <a href="https://linkedin.com/in/ankur-yadav" target="_blank" rel="noopener noreferrer">linkedin.com/in/ankur-yadav</a></li>
-      <li>Certificate: <a href="https://www.credly.com/users/ankur-yadav.5564058c" target="_blank" rel="noopener noreferrer">Credly</a></li>
     </ul>
   </section>
 
-  <section id="contact">
+  <section id="contact" class="tab-section" style="display:none;">
     <h2>Contact</h2>
     <ul class="contact-list">
       <li>Email: <a href="mailto:yankur9@gmail.com">yankur9@gmail.com</a></li>
@@ -174,14 +183,16 @@
   </footer>
 
   <script>
-    // Smooth scroll for navigation links
-    document.querySelectorAll('nav a').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
+    // Tab navigation logic
+    function showTab(tabId) {
+      document.querySelectorAll('.tab-section').forEach(section => {
+        section.style.display = 'none';
       });
+      document.getElementById(tabId).style.display = 'block';
+    }
+    // Show the first tab by default
+    document.addEventListener('DOMContentLoaded', function() {
+      showTab('about');
     });
   </script>
 </body>
