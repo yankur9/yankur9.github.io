@@ -14,6 +14,38 @@
       color: #222;
       line-height: 1.7;
     }
+      .reviews-section {
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 16px rgba(0,0,0,0.09);
+        padding: 32px 32px 18px 32px;
+        margin-bottom: 30px;
+        animation: fadeIn 0.3s;
+      }
+      .review-card {
+        background: linear-gradient(90deg,#e3eafc 60%,#f4f8fb 100%);
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+        padding: 18px 22px;
+        margin-bottom: 18px;
+        border-left: 5px solid #0056b3;
+        position: relative;
+      }
+      .reviewer {
+        font-weight: 600;
+        color: #0056b3;
+        margin-bottom: 4px;
+      }
+      .review-text {
+        font-style: italic;
+        color: #333;
+      }
+      .review-stars {
+        color: #ffc107;
+        font-size: 1.1em;
+        margin-bottom: 6px;
+        letter-spacing: 2px;
+      }
     .profile-header {
       text-align: center;
       margin-bottom: 30px;
@@ -151,6 +183,7 @@
     <button class="tab-btn" onclick="showTab('skills')">Technical Skills</button>
     <button class="tab-btn" onclick="showTab('profiles')">Portfolio</button>
     <button class="tab-btn" onclick="showTab('contact')">Contact</button>
+    <button class="tab-btn" onclick="showTab('reviews')">Reviews</button>
   </nav>
 
   <section id="about" class="tab-section">
@@ -299,6 +332,25 @@
       <li>Phone: +91-8574962672</li>
     </ul>
   </section>
+
+    <section id="reviews" class="tab-section reviews-section" style="display:none;">
+      <h2>Reviews</h2>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"Ankur is a fantastic engineer! His attention to detail and ability to solve complex problems is truly impressive. Highly recommended for any backend or API work."</div>
+        <div class="reviewer">– Priya S., Team Lead at Visa</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"Working with Ankur was a pleasure. He is proactive, collaborative, and always willing to mentor others. His technical knowledge is top-notch."</div>
+        <div class="reviewer">– Rahul V., Senior Developer</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★☆</div>
+        <div class="review-text">"Ankur's expertise in distributed systems and payment APIs helped our team deliver on tight deadlines. Would love to work together again!"</div>
+        <div class="reviewer">– Sneha M., Product Manager</div>
+      </div>
+    </section>
 
   <footer>
     &copy; 2025 Ankur Yadav
