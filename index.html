@@ -85,25 +85,39 @@
       box-shadow: 0 2px 12px rgba(0,0,0,0.07);
       animation: fadeIn 0.3s;
     }
-    .project-block {
-      margin-bottom: 28px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid #eaeaea;
+    .loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      color: #666;
     }
-    .project-block:last-child {
-      border-bottom: none;
+    .error {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      color: #d32f2f;
+      background: #ffebee;
+      border-radius: 8px;
+      margin: 20px 0;
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    ul {
-      list-style-type: disc;
-      padding-left: 22px;
-      margin-bottom: 18px;
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
-    .project, .job {
-      margin-bottom: 18px;
+    .spinner {
+      border: 3px solid #f3f3f3;
+      border-top: 3px solid #0056b3;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      animation: spin 1s linear infinite;
+      margin-right: 10px;
     }
     footer {
       text-align: center;
@@ -113,15 +127,6 @@
       background: #f4f8fb;
       border-radius: 6px;
       margin-top: 20px;
-    }
-    .contact-list a {
-      color: #0056b3;
-      text-decoration: none;
-      font-weight: 500;
-    }
-    .contact-list a:hover {
-      text-decoration: underline;
-      color: #007bff;
     }
     @media (max-width: 600px) {
       body {
@@ -141,7 +146,17 @@
   <header class="profile-header">
     <img src="profile.jpg" alt="Profile Photo" class="profile-pic" onerror="this.style.display='none'">
     <h1>Ankur Yadav</h1>
-    <p>Senior Software Engineer at Visa Inc. | M.Tech Computer Science (IIT Madras)</p>
+    <p style="display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap;">
+      Senior Software Engineer at Visa | M.Tech CSE (IIT Madras)
+      <a href="Ankur_Resume.pdf" download 
+         style="display: inline-flex; align-items: center; gap: 4px; padding: 6px 12px; background: linear-gradient(135deg, #0056b3 0%, #007bff 100%); color: white; text-decoration: none; border-radius: 20px; font-size: 13px; font-weight: 500; transition: all 0.3s ease; box-shadow: 0 2px 6px rgba(0,86,179,0.2);"
+         onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 4px 12px rgba(0,86,179,0.3)'"
+         onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 6px rgba(0,86,179,0.2)'"
+         title="Download Resume">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Resume
+      </a>
+    </p>
   </header>
 
   <nav class="tab-nav">
@@ -149,252 +164,50 @@
     <button class="tab-btn" onclick="showTab('company')">Professional Experience</button>
     <button class="tab-btn" onclick="showTab('projects')">Projects</button>
     <button class="tab-btn" onclick="showTab('skills')">Technical Skills</button>
-    <button class="tab-btn" onclick="showTab('profiles')">Portfolio</button>
-    <button class="tab-btn" onclick="showTab('contact')">Contact</button>
+    <button class="tab-btn" onclick="showTab('contact')">Portfolio & Contact</button>
   </nav>
 
+  <!-- Tab Content Sections -->
   <section id="about" class="tab-section">
-    <div style="font-size: 1.15em; color: #333; line-height: 1.8;">
-      <p>
-        👋 Hi, I'm Ankur Yadav!<br>
-        🚀 Backend Software Engineer with 5 years of experience, passionate about building scalable payment systems and APIs.<br>
-        🏡 Originally from Etawah, Uttar Pradesh, now based in vibrant Bangalore.<br>
-        💳 At Visa Inc. (Visa Direct team), I design and build robust APIs for real-time financial transactions, making money move faster and smarter.<br>
-        🎓 M.Tech in Computer Science & Engineering from IIT Madras.<br>
-        🛠️ I love solving complex engineering challenges, driving innovation, and making payment tech more awesome.<br>
-        🤝 Always up for a good tech chat, mentoring, or collaborating on cool projects!
-      </p>
-      <div style="margin-top: 18px;">
-        <img src="https://cdn-icons-png.flaticon.com/512/3448/3448446.png" alt="Bangalore" style="height:40px;vertical-align:middle;margin-right:8px;"/>
-        <img src="https://cdn-icons-png.flaticon.com/512/633/633611.png" alt="Payments" style="height:40px;vertical-align:middle;margin-right:8px;"/>
-        <img src="https://img.icons8.com/color/96/000000/idea.png" alt="Innovation" style="height:40px;vertical-align:middle;margin-right:8px;"/>
-      </div>
+    <div class="loading">
+      <div class="spinner"></div>
+      Loading About section...
     </div>
   </section>
 
-  <section id="company" class="tab-section" style="display:none;">
-    <div class="job">
-      <h3>Visa Inc. – Backend API Development, Visa Direct (Oct 2020 – Present)</h3>
-      <ul>
-        <li>Backend engineer for Visa Direct, developing real-time payment APIs for seamless integration with fintech and legacy systems. As part of the Visa Direct team, I contribute to building APIs that enable payment rails for push payments to cards, account-to-account transfers, and cross-border transactions, supporting use cases such as P2P, B2C, B2B, account funding, and real-time disbursements.</li>
-        <li><strong>Payment Rails:</strong>
-          <ul>
-              <li>Visa Direct payment rails support push payments to cards, account-to-account transfers, and cross-border transactions in multiple currencies. These APIs enable use cases such as P2P (person-to-person), B2C (business-to-consumer), B2B (business-to-business), account funding, and real-time disbursements for insurance, gig economy, and vendor payments.</li>
-          </ul>
-        </li>
-        <li>Designed and maintained financial and non-financial APIs supporting high-volume, mission-critical payment flows.</li>
-        <li>Implemented solutions for both JSON and ISO 8583 message formats, enabling flexible partner integration.</li>
-        <li>Built scalable backend services and RESTful APIs using Java, Spring, Maven, Oracle, and Kafka.</li>
-        <li>Enabled fast, secure transaction data streaming and analytics with Apache Kafka and Elasticsearch.</li>
-        <li>Ensured reliability, compliance, and security in collaboration with global partners and infrastructure teams.</li>
-        <li>Contributed to code reviews, team mentoring, and technical knowledge sharing.</li>
-      </ul>
+  <section id="company" class="tab-section">
+    <div class="loading">
+      <div class="spinner"></div>
+      Loading Professional Experience...
     </div>
   </section>
 
-  <section id="projects" class="tab-section" style="display:none;">
-    <div class="project-block">
-      <h3>Master's Project</h3>
-      <ul>
-        <li>Study of Compare Less Defer More
-          <ul>
-            <li>Scaled value-contexts based whole-program heap analyses for advanced program analysis</li>
-            <li>Explored DATALOG language in DOOP framework for static analysis research</li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-    <div class="project-block">
-      <h3>Bachelor's Project</h3>
-      <ul>
-        <li>Parallel Programming using GPU
-          <ul>
-            <li>Implemented matrix multiplication on GPU with and without tiling for performance benchmarking</li>
-            <li>Optimized tile sizes, block and thread dimensions to achieve 4.6x speedup</li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-    <div class="project-block">
-      <h3>Key Course Projects</h3>
-      <ul>
-        <li>Search Engine for Information Retrieval
-          <ul>
-            <li>Implementation of Vector Space Model on Cranfield dataset</li>
-            <li>Latent Semantic Analysis on unigrams and bigrams, analyzing synonymy and polysemy effects</li>
-            <li>Explicit Semantic Analysis using Wikipedia data</li>
-          </ul>
-        </li>
-        <li>Image Classification using CNN
-          <ul>
-            <li>Trained CNN model to learn image features and classify images</li>
-            <li>Feature visualization and guided backpropagation for model interpretability</li>
-          </ul>
-        </li>
-        <li>Random Forest Implementation on GPU (CUDA & C)
-          <ul>
-            <li>Used ID3 algorithm for decision tree creation</li>
-            <li>Implemented shared memory, atomic operations, parallel reduce, and task-level parallelism</li>
-            <li>Achieved 3.3x speedup with 78% accuracy</li>
-            <li><a href="https://bitbucket.org/RahulVashisht/random-forest-implementation-on-gpu/src/master/" target="_blank" rel="noopener noreferrer">Bitbucket Repository</a></li>
-          </ul>
-        </li>
-        <li>Code Instrumentation (LLVM & C++)
-          <ul>
-            <li>Built LLVM pass to remove unsafe pointer dereferences (null/dangling pointers)</li>
-            <li>Returned valid executable code after instrumentation</li>
-          </ul>
-        </li>
-        <li>Handwritten Character & Spoken Digit Recognition
-          <ul>
-            <li>Extracted time-based and spatial features for handwritten Telugu character recognition using HMMs</li>
-            <li>Trained HMMs on MFCCs for isolated and connected spoken digit recognition</li>
-          </ul>
-        </li>
-        <li>Comparison of Classification Models
-          <ul>
-            <li>Compared GMM, Logistic Regression, SVM, Perceptron, MLFFNN models on synthetic and real datasets</li>
-          </ul>
-        </li>
-        <li>2-Class Classification using Bayes Classifier
-          <ul>
-            <li>Classified high-dimensional data (70,000 samples, 100 features) into two classes without inbuilt functions</li>
-            <li>Reported training and testing accuracy</li>
-          </ul>
-        </li>
-        <li>Dimensionality Reduction using PCA
-          <ul>
-            <li>Reduced dimensions of large datasets using PCA</li>
-            <li>Classified reduced data using custom Bayes classifier (no inbuilt functions)</li>
-          </ul>
-        </li>
-      </ul>
+  <section id="projects" class="tab-section">
+    <div class="loading">
+      <div class="spinner"></div>
+      Loading Projects...
     </div>
   </section>
 
-  <section id="skills" class="tab-section" style="display:none;">
-    <div style="display: flex; flex-wrap: wrap; gap: 32px; margin-top: 24px;">
-      <div style="flex: 1 1 320px; min-width: 280px;">
-        <h3 style="color: #333; display: flex; align-items: center; gap: 8px;">
-          Expert & Advanced-Level Skills
-        </h3>
-        <ul style="list-style-type: none; margin-left: 0; color: #555; font-size: 16px; padding: 0;">
-          <li style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
-            <img src="apachekafka.svg" width="22" height="22" alt="Kafka"/> Apache Kafka, ISO 8583, RESTful APIs, JSON
-          </li>
-          <li style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" width="22" height="22" alt="Java"/> <strong>Java</strong>
-          </li>
-          <li style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" width="22" height="22" alt="Spring"/> Spring, Spring Boot, Maven
-          </li>
-          <li style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg" width="22" height="22" alt="Oracle"/> Oracle, MySQL
-          </li>
-          <li style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" width="22" height="22" alt="Git"/> IntelliJ IDEA, VS Code, Git, Jira, GitHub Copilot
-          </li>
-          <li style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
-            <img src="https://img.icons8.com/color/48/000000/artificial-intelligence.png" width="22" height="22" alt="AI"/> Vibe Coding, MCP Server, Agentic AI
-          </li>
-          <li style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
-            <img src="https://img.icons8.com/ios-filled/50/007acc/console.png" width="22" height="22" alt="CLI"/> CLI (Command-Line Interface)
-          </li>
-        </ul>
-      </div>
-      <div style="flex: 1 1 320px; min-width: 280px;">
-        <h3 style="color: #333; display: flex; align-items: center; gap: 8px;">
-          Working Knowledge & Familiarity
-        </h3>
-        <ul style="list-style-type: none; margin-left: 0; color: #555; font-size: 16px; padding: 0;">
-          <li style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" width="22" height="22" alt="C"/> C, C++ (good proficiency), Python (basic knowledge), Assembly (8085)
-          </li>
-          <li style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" width="22" height="22" alt="TensorFlow"/> TensorFlow, CUDA, LLVM
-          </li>
-          <li style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/eclipse/eclipse-original.svg" width="22" height="22" alt="Eclipse"/> Eclipse, LaTeX
-          </li>
-        </ul>
-      </div>
+  <section id="skills" class="tab-section">
+    <div class="loading">
+      <div class="spinner"></div>
+      Loading Technical Skills...
     </div>
   </section>
 
-  <section id="profiles" class="tab-section" style="display:none;">
-    <ul class="contact-list" style="list-style-type: none; padding-left: 0;">
-      <li>
-        <span style="vertical-align: middle; margin-right: 6px;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#FFA116"><path d="M12 2C6.48 2 2 6.48 2 12c0 5.52 4.48 10 10 10s10-4.48 10-10c0-5.52-4.48-10-10-10zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
-        </span>
-        <a href="https://leetcode.com/u/yankur9/" target="_blank" rel="noopener noreferrer">leetcode.com/u/yankur9</a>
-      </li>
-      <li>
-        <span style="vertical-align: middle; margin-right: 6px;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#2EC866"><circle cx="12" cy="12" r="10"/><text x="12" y="16" text-anchor="middle" font-size="10" fill="#fff">H</text></svg>
-        </span>
-        <a href="https://www.hackerrank.com/profile/cs18m063" target="_blank" rel="noopener noreferrer">hackerrank.com/profile/cs18m063</a>
-      </li>
-      <li>
-        <span style="vertical-align: middle; margin-right: 6px;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#333"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.757-1.333-1.757-1.089-.745.083-.729.083-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.834 2.809 1.304 3.495.997.108-.775.418-1.305.762-1.605-2.665-.305-5.466-1.334-5.466-5.93 0-1.31.469-2.381 1.236-3.221-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23a11.52 11.52 0 0 1 3.003-.404c1.018.005 2.045.138 3.003.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.873.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.803 5.624-5.475 5.921.43.371.823 1.102.823 2.222v3.293c0 .322.218.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-        </span>
-        <a href="https://github.com/yankur9" target="_blank" rel="noopener noreferrer">github.com/yankur9</a>
-      </li>
-      <li>
-        <span style="vertical-align: middle; margin-right: 6px;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#0077B5"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.268h-3v-5.604c0-1.337-.026-3.063-1.868-3.063-1.868 0-2.156 1.459-2.156 2.967v5.7h-3v-10h2.881v1.367h.041c.401-.761 1.381-1.563 2.841-1.563 3.039 0 3.6 2.002 3.6 4.604v5.592z"/></svg>
-        </span>
-        <a href="https://www.linkedin.com/in/ankur-yadav-14902711b/" target="_blank" rel="noopener noreferrer">linkedin.com/in/ankur-yadav</a>
-      </li>
-      <li>
-        <span style="vertical-align: middle; margin-right: 6px;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#D44638"><path d="M12 12.713l11.985-8.713h-23.97l11.985 8.713zm0 2.574l-12-8.713v13.426c0 1.104.896 2 2 2h20c1.104 0 2-.896 2-2v-13.426l-12 8.713z"/></svg>
-        </span>
-        <a href="Ankur_Resume.pdf" download>Download My Resume (PDF)</a>
-      </li>
-      <li>
-        <span style="vertical-align: middle; margin-right: 6px;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#4C6EF5"><circle cx="12" cy="12" r="10"/><text x="12" y="16" text-anchor="middle" font-size="10" fill="#fff">C</text></svg>
-        </span>
-        <a href="https://www.credly.com/users/ankur-yadav.5564058c" target="_blank" rel="noopener noreferrer">View Credly Certificate</a>
-      </li>
-    </ul>
-  </section>
-
-  <section id="contact" class="tab-section" style="display:none;">
-    <ul class="contact-list" style="list-style-type: none; padding-left: 0;">
-      <li>
-        <span style="vertical-align: middle; margin-right: 6px;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0056b3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,6 12,13 2,6"/></svg>
-        </span>
-        <a href="mailto:yankur9@gmail.com">yankur9@gmail.com</a>
-      </li>
-      <li>
-        <span style="vertical-align: middle; margin-right: 6px;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0056b3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92V19a2 2 0 0 1-2.18 2A19.86 19.86 0 0 1 3 5.18 2 2 0 0 1 5 3h2.09a2 2 0 0 1 2 1.72c.13 1.06.37 2.09.72 3.08a2 2 0 0 1-.45 2.11l-1.27 1.27a16 16 0 0 0 6.29 6.29l1.27-1.27a2 2 0 0 1 2.11-.45c.99.35 2.02.59 3.08.72A2 2 0 0 1 22 16.92z"/></svg>
-        </span>
-        +91-8574962672
-      </li>
-    </ul>
+  <section id="contact" class="tab-section">
+    <div class="loading">
+      <div class="spinner"></div>
+      Loading Portfolio & Contact...
+    </div>
   </section>
 
   <footer>
     &copy; 2025 Ankur Yadav
   </footer>
 
-  <script>
-    // Tab navigation logic
-    function showTab(tabId) {
-      document.querySelectorAll('.tab-section').forEach(section => {
-        section.style.display = 'none';
-      });
-      document.getElementById(tabId).style.display = 'block';
-    }
-    // Show the first tab by default
-    document.addEventListener('DOMContentLoaded', function() {
-      showTab('about');
-    });
-  </script>
+  <!-- Load the main JavaScript -->
+  <script src="js/main.js"></script>
 </body>
 </html>
